@@ -19,7 +19,7 @@ export function Modal({ image, onClose }) {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [onClose]);
+  });
 
   
 
