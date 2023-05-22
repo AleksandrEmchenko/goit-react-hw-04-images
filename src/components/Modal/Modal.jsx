@@ -6,19 +6,22 @@ import PropTypes from "prop-types";
 const ModalRoot = document.querySelector("#ModalRoot");
 
 export function Modal({ image, onClose }) {
-  useEffect(() => {
-    window.addEventListener("keydown", keyDown);
 
-    return () => {
-      window.removeEventListener("keydown", keyDown);
-    };
-  }, []);
-
-  const keyDown = (event) => {
+  const handleKeyDown = (event) => {
     if (event.code === "Escape") {
       onClose();
     }
   };
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
+
+  
 
   const handleModalClose = (event) => {
     if (event.currentTarget === event.target) {

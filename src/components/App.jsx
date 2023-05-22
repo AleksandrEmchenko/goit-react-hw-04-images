@@ -45,6 +45,7 @@ export function App() {
     try {
       const { hits } = await searchFunc(query, (page += 1));
       setStatus("resolved");
+      
       setItems([...items, ...hits]);
     } catch (error) {
       setStatus("rejected");
